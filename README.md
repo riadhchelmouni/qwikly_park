@@ -65,9 +65,3 @@ pnpm install
 pnpm dev
 ```
 The frontend will be available at `http://localhost:5173`.
-
-## Contributing
-Feel free to open issues or submit pull requests. Ensure that you follow the established architectural guidelines (e.g., Service Pattern in Laravel, Composition API in Vue).
-
-## License
-[MIT License](LICENSE)
