@@ -1,0 +1,46 @@
+// Write your overrides
+
+.page-background {
+  height: 100%;
+  background-image: url(../images/pages/auth-background.jpg);
+  background-position: bottom left;
+  object-fit: cover;
+}
+
+
+@media (max-width: 1024px) {
+  .page-background {
+    height: 100%;
+    background-image: url(../images/pages/auth-background-2.jpg);
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-background {
+    height: 100%;
+    background-image: none;
+    background-color: var(--theme-background);
+  }
+
+  .page-background .v-card {
+    background-color: var(--theme-background);
+  }
+}
+
+.v-data-table-rows-loading {
+  text-align: center;
+}
+
+.v-table__wrapper::-webkit-scrollbar {
+  height: 5px;
+}
+.v-table__wrapper::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(var(--v-border-color), 0.3) !important;
+}
+.v-table__wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(var(--v-border-color), 0.8) !important;
+}

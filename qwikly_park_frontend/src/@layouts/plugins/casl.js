@@ -1,0 +1,36 @@
+import { useAbility } from '@casl/vue'
+
+/**
+ * Returns ability result if ACL is configured or else just return true
+ * We should allow passing string | undefined to can because for admin ability we omit defining action & subject
+ *
+ * Useful if you don't know if ACL is configured or not
+ * Used in @core files to handle absence of ACL without errors
+ *
+ * @param {string} action CASL Actions // https://casl.js.org/v4/en/guide/intro#basics
+ * @param {string} subject CASL Subject // https://casl.js.org/v4/en/guide/intro#basics
+ */
+export const can = (action) => {
+  const vm = getCurrentInstance()
+  if (!vm)
+    return false
+  const localCan = vm.proxy && '$can' in vm.proxy
+  
+  return localCan ? vm.proxy?.$can(action) : true
+}
+
+/**
+ * Check if user can view item based on it's ability
+ * Based on item's action and subject & Hide group if all of it's children are hidden
+ * @param {object} item navigation object item
+ */
+export const canViewNavMenuGroup = item => {
+  const hasAnyVisibleChild = item.children.some(i => can(i.action) || !i.action)
+
+  return hasAnyVisibleChild
+}
+export const canNavigate = action => {
+  const ability = useAbility()
+  
+  return ability.can(action)
+}
